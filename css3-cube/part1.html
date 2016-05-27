@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    background-color: black;
+}
+
+.space {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 500px;
+    width: 99vw;
+    outline: #fff;
+    background-color: #ffa;
+}
+
+.wall {
+    width: 100px;
+    height: 500px;
+    display: inline-block;
+    position: relative;
+    left: 100px;
+    background-color: green;
+}
+
+.square {
+    width: 100%;
+    height: 100px;
+    background-color: #faf;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: 0.5s;
+    animation: jump 5s -3s infinite;
+}
+
+
+/*.space:nth-child(4n) .square { animation: jump 5s 0s infinite; }
+*/
+
+.wall:nth-child(3n) .square {
+    animation: jump 4s -5s infinite;
+}
+
+.wall:nth-child(3n+1).square {
+    animation: jump 3s -3s infinite;
+}
+
+.wall:nth-child(3n+2) .square {
+    animation: jump 6s -1s infinite;
+}
+
+.wall:nth-child(4n) .square {
+    animation: jump 4s -2s infinite;
+}
+
+.square:hover {
+    background-color: black;
+}
+
+@keyframes jump {
+    0% {
+        top: 0px;
+        background-color: hsla(0, 100%, 50%, 1);
+        animation-timing-function: linear;
+    }
+    50% {
+        top: 400px;
+        background-color: hsla(180, 100%, 50%, 1);
+        animation-timing-function: linear;
+    }
+    100% {
+        top: 0px;
+        background-color: hsla(360, 100%, 50%, 1);
+        animation-timing-function: linear;
+    }
+}
+
+.button {
+    width: 100px;
+    height: 500px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.goal {
+    width: 50px;
+    height: 500px;
+    right: 0;
+}
+
+.time {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+}
+</style>
+
+<body>
+    <div class="space">
+        <button class="button start" onClick="timedCount()">Go</button>
+        <input type="text" class="time" id="txt">
+        <div class="wall">
+            <div class="square"></div>
+        </div>
+        <div class="wall">
+            <div class="square"></div>
+        </div>
+        <div class="wall">
+            <div class="square"></div>
+        </div>
+        <div class="wall">
+            <div class="square"></div>
+        </div>
+        <div class="wall">
+            <div class="square"></div>
+        </div>
+        <div class="wall">
+            <div class="square"></div>
+        </div>
+        <div class="wall">
+            <div class="square"></div>
+        </div>
+        <div class="wall">
+            <div class="square"></div>
+        </div>
+        <div class="wall">
+            <div class="square"></div>
+        </div>
+        <div class="wall">
+            <div class="square"></div>
+        </div>
+        <div class="wall">
+            <div class="square"></div>
+        </div>
+        <button class="button goal" onclick="finish()">Goal</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script>
+    $('.square').hover(function() {
+        alert("you lose");
+    });
+    </script>
+    <script type="text/javascript">
+    var c = 0
+    var t
+
+    function timedCount() {
+        document.getElementById('txt').value = c
+        c = c + 1
+        t = setTimeout("timedCount()", 1000)
+    }
+
+    function finish() {
+        clearTimeout(t)
+        alert(t)
+    }
+    </script>
+</body>
+
+</html>
