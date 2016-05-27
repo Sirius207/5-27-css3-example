@@ -56,9 +56,43 @@ body {
     line-height: 100px;
 }
 
+.box .front {
+    transform: rotateX(0deg) translateZ(50px);
+}
 
-/* .box .front { transform: rotateX(0deg) translateZ(50px); } .box .back { transform: rotateY(180deg) translateZ(50px); } .box .top { transform: rotateX(90deg) translateZ(50px); } .box .down { transform: rotateX(270deg) translateZ(50px); } .box .left { transform: rotateY(90deg) translateZ(50px); } .box .right { transform: rotateY(270deg) translateZ(50px); }
-*/
+.box .back {
+    transform: rotateY(180deg) translateZ(50px);
+}
+
+.box .top {
+    transform: rotateX(90deg) translateZ(50px);
+}
+
+.box .down {
+    transform: rotateX(270deg) translateZ(50px);
+}
+
+.box .left {
+    transform: rotateY(90deg) translateZ(50px);
+    background-color: green;
+}
+
+.box .right {
+    transform: rotateY(270deg) translateZ(50px);
+}
+
+.ground {
+    width: 100vw;
+    height: 500px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: brown;
+    transform: rotateX(90deg) translateY(-250px) translateZ(-250px);
+    z-index: -1;
+}
 </style>
 
 <body>
@@ -71,6 +105,7 @@ body {
             <div class="surface right">R</div>
             <div class="surface down">D</div>
         </div>
+        <div class="ground"></div>
     </div>
 </body>
 

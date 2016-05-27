@@ -56,9 +56,30 @@ body {
     line-height: 100px;
 }
 
+.box .front {
+    transform: rotateX(0deg) translateZ(50px);
+}
 
-/* .box .front { transform: rotateX(0deg) translateZ(50px); } .box .back { transform: rotateY(180deg) translateZ(50px); } .box .top { transform: rotateX(90deg) translateZ(50px); } .box .down { transform: rotateX(270deg) translateZ(50px); } .box .left { transform: rotateY(90deg) translateZ(50px); } .box .right { transform: rotateY(270deg) translateZ(50px); }
-*/
+.box .back {
+    transform: rotateY(180deg) translateZ(50px);
+}
+
+.box .top {
+    transform: rotateX(90deg) translateZ(50px);
+}
+
+.box .down {
+    transform: rotateX(270deg) translateZ(50px);
+}
+
+.box .left {
+    transform: rotateY(90deg) translateZ(50px);
+    background-color: green;
+}
+
+.box .right {
+    transform: rotateY(270deg) translateZ(50px);
+}
 </style>
 
 <body>
