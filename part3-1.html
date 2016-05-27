@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    background-color: white;
+}
+
+.space {
+    width: 99vw;
+    /*螢幕可視範寬度的百分比*/
+    height: 80vh;
+    /*螢幕可視範圍高度的百分比*/
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    perspective: 400px;
+    perspective-origin: center center;
+    outline: 10px solid black;
+}
+</style>
+<style>
+.tri {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    height: 100px;
+    transform: rotateX(0deg);
+    transform-style: preserve-3d;
+}
+
+.tri-child {
+    text-align: center;
+    line-height: 100px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0;
+    height: 0;
+    border-top: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    /*border-bottom: 71px solid black;*/
+}
+
+.tri-1 {
+    transform: rotateZ(90deg) translateY(-100%);
+    border-bottom: 87px solid blue;
+    transform-origin: 0% 0%;
+}
+
+.tri-2 {
+    transform: rotateZ(180deg) translateY(100%);
+    ;
+    border-bottom: 87px solid red;
+    transform-origin: center bottom;
+}
+
+.tri-3 {
+    transform: rotateZ(270deg) translateY(-100%);
+    border-bottom: 87px solid green;
+    transform-origin: 100% 0%;
+}
+
+.tri-4 {
+    transform: rotateZ(0deg) translateY(15%);
+    border-bottom: 87px solid orange;
+    transform-origin: center bottom;
+}
+
+.tri-5 {
+    border-top: 0;
+    border-left: 0px solid transparent;
+    border-right: 0px solid transparent;
+    border-bottom: 0px solid orange;
+    height: 100px;
+    width: 100px;
+    background-color: black;
+}
+</style>
+
+<body>
+    <div class="space">
+        <div class="tri">
+            <div class="tri-child tri-1">1</div>
+            <div class="tri-child tri-2">2</div>
+            <div class="tri-child tri-3">3</div>
+            <div class="tri-child tri-4">4</div>
+            <div class="tri-5">5</div>
+        </div>
+    </div>
+</body>
+
+</html>

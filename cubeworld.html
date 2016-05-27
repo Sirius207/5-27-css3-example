@@ -139,8 +139,21 @@
         transform: rotateY(270deg) translateZ(25px);
         background-image: radial-gradient(gray 10%, black);
     }
-    /* .box:after { content: ''; display: block; width: 100px; height: 10px; background-image: radial-gradient( hsla(0, 10%, 10%, 1), gray); border-radius: 50%; box-shadow: 0 0 5px gray; position: absolute; bottom: -40%; left: 0; right: 0; margin: auto; }
-*/
+    
+    .box:after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 10px;
+        background-image: radial-gradient( hsla(0, 10%, 10%, 1), gray);
+        border-radius: 50%;
+        box-shadow: 0 0 5px gray;
+        position: absolute;
+        bottom: -40%;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
     
     @keyframes flipX {
         0% {
@@ -206,7 +219,7 @@
         left: -1000rem;
     }
     
-    input: +.nano {
+    input +.nano {
         width: 100px;
         height: 100px;
         transition: .5s .2s cubic-bezier(.43, -0.59, .6, 1.44);

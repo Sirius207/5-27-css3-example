@@ -35,17 +35,18 @@ body {
 .nano {
     width: 50px;
     height: 50px;
-    position: relative;
-    display: inline-block;
+    position: absolute;
+    left: 0;
+    right: 0;
     top: 0;
     bottom: 0;
-    margin: 5%;
+    margin: auto;
     transform-style: preserve-3d;
 }
 
 .box {
-    width: 100%;
-    height: 100%;
+    width: 100px;
+    height: 100px;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -68,32 +69,32 @@ body {
 }
 
 .box .front {
-    transform: rotateX(0deg) translateZ(25px);
+    transform: rotateX(0deg) translateZ(50px);
     background-color: red;
 }
 
 .box .back {
-    transform: rotateY(180deg) translateZ(25px);
+    transform: rotateY(180deg) translateZ(50px);
     background-color: blue;
 }
 
 .box .top {
-    transform: rotateX(90deg) translateZ(25px);
+    transform: rotateX(90deg) translateZ(50px);
     background-color: green;
 }
 
 .box .down {
-    transform: rotateX(270deg) translateZ(25px);
+    transform: rotateX(270deg) translateZ(50px);
     background-color: orange;
 }
 
 .box .left {
-    transform: rotateY(90deg) translateZ(25px);
+    transform: rotateY(90deg) translateZ(50px);
     background-color: black;
 }
 
 .box .right {
-    transform: rotateY(270deg) translateZ(25px);
+    transform: rotateY(270deg) translateZ(50px);
     background-color: gray;
 }
 
@@ -125,35 +126,18 @@ input {
 }
 
 input+.nano {
-    transition: .5s .1s cubic-bezier(.43, -0.59, .6, 1.44);
+    width: 100px;
+    height: 100px;
+    transition: .5s .2s cubic-bezier(.43, -0.59, .6, 1.44);
 }
 
 input:checked +.nano {
     transform: /*rotate3d(1, 1, 1, 45deg)*/
     scale(.5);
-    transition: .5s .1s cubic-bezier(.43, -0.59, .6, 1.44);
+    transition: .5s .2s cubic-bezier(.43, -0.59, .6, 1.44);
 }
 
 input:checked +.nano .surface {
-    background-color: white;
-}
-
-input:checked +.nano ~.nano {
-    opacity: 1;
-    transform: scale(.5);
-    transition: 1s;
-    margin: 5%;
-}
-
-.nano ~.nano {
-    opacity: 0;
-    left: 0;
-    transition: 1s;
-    transform: scale(.5);
-    margin: 0%;
-}
-
-input:checked +.nano ~.nano .surface {
     background-color: white;
 }
 </style>
@@ -162,36 +146,6 @@ input:checked +.nano ~.nano .surface {
     <div class="space">
         <label>
             <input type="checkbox">
-            <div class="nano">
-                <div class="box">
-                    <div class="surface front">F</div>
-                    <div class="surface top">T</div>
-                    <div class="surface back">B</div>
-                    <div class="surface left">L</div>
-                    <div class="surface right">R</div>
-                    <div class="surface down">D</div>
-                </div>
-            </div>
-            <div class="nano">
-                <div class="box">
-                    <div class="surface front">F</div>
-                    <div class="surface top">T</div>
-                    <div class="surface back">B</div>
-                    <div class="surface left">L</div>
-                    <div class="surface right">R</div>
-                    <div class="surface down">D</div>
-                </div>
-            </div>
-            <div class="nano">
-                <div class="box">
-                    <div class="surface front">F</div>
-                    <div class="surface top">T</div>
-                    <div class="surface back">B</div>
-                    <div class="surface left">L</div>
-                    <div class="surface right">R</div>
-                    <div class="surface down">D</div>
-                </div>
-            </div>
             <div class="nano">
                 <div class="box">
                     <div class="surface front">F</div>
