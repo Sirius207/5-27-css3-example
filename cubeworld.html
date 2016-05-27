@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    
+    body {
+        background-color: black;
+    }
+    
+    .space {
+        width: 99vw;
+        height: 100vh;
+        /*border: 1px solid #ffa;*/
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        -webkit-perspective: 400px;
+        -moz-perspective: 400px;
+        -ms-perspective: 400px;
+        perspective: 400px;
+        perspective-origin: center center;
+        background-image: radial-gradient(hsla(60, 100%, 50%, 1) 20%, hsla(60, 80%, 50%, 1) 40%, hsla(60, 60%, 50%, 1) 60%, hsla(60, 100%, 80%, 1) 70%, hsla(60, 100%, 40%, 1), hsla(60, 100%, 30%, 1), black 90%);
+    }
+    
+    .nano {
+        width: 50px;
+        height: 50px;
+        /*position: absolute;*/
+        /* left: 0; right: 0;*/
+        /* top: 0; bottom: 0; margin: auto;*/
+        display: inline-block;
+        margin: 3%;
+        transform-style: preserve-3d;
+        animation: approach 3s -0.2s linear infinite;
+    }
+    
+    .box {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        transform-style: preserve-3d;
+        border: 0px solid #ffa;
+        /*transform: rotateX(45deg) rotateY(45deg) rotateZ(45deg);*/
+        transition: 1s cubic-bezier(.43, -0.59, .6, 1.44);
+        animation: flipX 2s -0.2s linear infinite;
+    }
+    
+    label:nth-child(2n) .box {
+        animation: flipY 3s -0.2s linear infinite;
+    }
+    
+    label:nth-child(4n) .box {
+        animation: flipX 4s -0.2s linear infinite;
+    }
+    
+    label:nth-child(3n) .box {
+        animation: flipY 2s -0.3s linear infinite;
+    }
+    
+    label:nth-child(5n) .box {
+        animation: approach 3s -1.2s linear infinite;
+    }
+    
+    label:nth-child(2n) .nano {
+        animation: approach 3s -0.2s linear infinite;
+    }
+    
+    label:nth-child(4n) .nano {
+        animation: approach 4s -0.2s linear infinite;
+    }
+    
+    label:nth-child(3n) .nano {
+        animation: approach 2s -0.3s linear infinite;
+    }
+    
+    label:nth-child(5n) .nano {
+        animation: approach 6s -1.2s linear infinite;
+    }
+    /* .box:hover { transition: 1s cubic-bezier(.43, -0.59, .6, 1.44); } .box:hover .surface { background-image: radial-gradient(white, black); transition: 1s; }
+*/
+    
+    .box .surface {
+        width: 100%;
+        height: 100%;
+        outline: 1px solid #0f0;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        margin: auto;
+        text-align: center;
+        font-size: 20px;
+        line-height: 50px;
+        transition: 1s;
+    }
+    
+    .box .front {
+        transform: rotateX(0deg) translateZ(25px);
+        background-image: radial-gradient(red 10%, black);
+    }
+    
+    .box .back {
+        transform: rotateY(180deg) translateZ(25px);
+        background-image: radial-gradient(green 10%, black);
+    }
+    
+    .box .top {
+        transform: rotateX(90deg) translateZ(25px);
+        background-image: radial-gradient(yellow 10%, black);
+    }
+    
+    .box .down {
+        transform: rotateX(270deg) translateZ(25px);
+        background-image: radial-gradient(blue 10%, black);
+    }
+    
+    .box .left {
+        transform: rotateY(90deg) translateZ(25px);
+        background-image: radial-gradient(orange 10%, black);
+    }
+    
+    .box .right {
+        transform: rotateY(270deg) translateZ(25px);
+        background-image: radial-gradient(gray 10%, black);
+    }
+    /* .box:after { content: ''; display: block; width: 100px; height: 10px; background-image: radial-gradient( hsla(0, 10%, 10%, 1), gray); border-radius: 50%; box-shadow: 0 0 5px gray; position: absolute; bottom: -40%; left: 0; right: 0; margin: auto; }
+*/
+    
+    @keyframes flipX {
+        0% {
+            transform: rotateX(45deg) rotateY(45deg);
+            scale(1);
+            opacity: 0.3;
+        }
+        100% {
+            transform: rotateX(45deg) rotateY(405deg);
+            scale(2);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes flipY {
+        0% {
+            transform: rotateX(45deg) rotateZ(45deg);
+            scale(0.5);
+            opacity: 1;
+        }
+        100% {
+            transform: rotateX(45deg) rotateZ(405deg);
+            scale(1);
+            opacity: 0.2;
+        }
+    }
+    
+    @keyframes flipZ {
+        0% {
+            transform: rotateX(45deg) rotateZ(45deg);
+            scale(0.5);
+            opacity: 0.2;
+        }
+        100% {
+            transform: rotateX(405deg) rotateZ(45deg);
+            scale(1.5);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes nano {
+        0% {
+            transform: /*rotate3d(1, 1, 1, 45deg)*/
+            scale(1);
+        }
+        100% {
+            transform: /*rotate3d(1, 1, 1, 360deg)*/
+            scale(.5);
+        }
+    }
+    
+    @keyframes approach {
+        0% {
+            transform: translateZ(-500px);
+        }
+        100% {
+            transform: translateZ(405px);
+        }
+    }
+    
+    input {
+        position: absolute;
+        left: -1000rem;
+    }
+    
+    input: +.nano {
+        width: 100px;
+        height: 100px;
+        transition: .5s .2s cubic-bezier(.43, -0.59, .6, 1.44);
+    }
+    
+    input:checked +.nano {
+        transform: /*rotate3d(1, 1, 1, 45deg)*/
+        scale(.5);
+        /*animation: nano 1s 0s cubic-bezier(.43, -0.59, .6, 1.44) 1 both;*/
+        transition: 1s .2s cubic-bezier(.43, -0.59, .6, 1.44);
+    }
+    
+    input:checked +.nano .surface {
+        background-image: radial-gradient(white, black);
+    }
+    </style>
+</head>
+
+<body>
+    <div class="space">
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+        <label>
+            <input type="checkbox">
+            <div class="nano">
+                <div class="box">
+                    <div class="surface front">F</div>
+                    <div class="surface top">T</div>
+                    <div class="surface back">B</div>
+                    <div class="surface left">L</div>
+                    <div class="surface right">R</div>
+                    <div class="surface down">D</div>
+                </div>
+            </div>
+        </label>
+    </div>
+</body>
+
+</html>
